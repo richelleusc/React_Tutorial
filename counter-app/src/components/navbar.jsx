@@ -8,7 +8,7 @@ const NavBar = ({ totalCounters }) => {
       <a className="navbar-brand" href="#">
         Navbar{" "}
         <span className="badge badge-pill badge-secondary">
-          {totalCounters}
+          Total Items: {totalCounters}
         </span>
       </a>
       <button
@@ -25,11 +25,5 @@ const NavBar = ({ totalCounters }) => {
     </nav>
   );
 };
-
-// class NavBar extends Component {
-//   render() {
-
-//   }
-// }
 
 export default NavBar;

@@ -5,11 +5,12 @@ import "./App.css";
 
 class App extends Component {
   state = {
+    nextId: 5,
     counters: [
-      { id: 1, value: 4 },
-      { id: 2, value: 3 },
-      { id: 3, value: 2 },
-      { id: 4, value: 0 }
+      { id: 1, value: 4, item: "Apple" },
+      { id: 2, value: 3, item: "Banana" },
+      { id: 3, value: 2, item: "Watermelon" },
+      { id: 4, value: 0, item: "Pear" }
     ]
   };
 
@@ -33,6 +34,17 @@ class App extends Component {
     this.setState({ counters });
   };
 
+  handleDecrement = counter => {
+    console.log("handleDecrement");
+    if (counter.value > 0) {
+      const counters = [...this.state.counters];
+      const index = counters.indexOf(counter);
+      counters[index] = { ...counter };
+      counters[index].value--;
+      this.setState({ counters });
+    }
+  };
+
   handleReset = () => {
     const counters = this.state.counters.map(c => {
       c.value = 0;
@@ -48,6 +60,19 @@ class App extends Component {
     this.setState({ counters });
   };
 
+  handleAdd = itemName => {
+    if (itemName !== "") {
+      console.log("itemName: ", itemName);
+      const counters = [...this.state.counters];
+      counters.push({ id: this.state.nextId, value: 0, item: itemName });
+      console.log(counters);
+      let updateIndex = this.state.nextId;
+      updateIndex++;
+      this.setState({ counters });
+      this.setState({ nextId: updateIndex });
+    }
+  };
+
   render() {
     console.log("App - Rendered");
     return (
@@ -61,6 +86,8 @@ class App extends Component {
             onReset={this.handleReset}
             onIncrement={this.handleIncrement}
             onDelete={this.handleDelete}
+            onDecrement={this.handleDecrement}
+            onAdd={this.handleAdd}
           />
         </main>
       </React.Fragment>
