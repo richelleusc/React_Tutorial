@@ -1,0 +1,19 @@
+/* * {
+  box-sizing: border-box;
+} */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  font-family: "Raleway", sans-serif;
+  background: #f0f0f0;
+}
+
+nav {
+  background: linear-gradient(135deg, #5ee7df 0%, #b490ca 100%);
+}
